@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .navbar-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #667eea;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .navbar-download {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-download:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .user-icon::before {
+            content: "👤";
+            font-size: 1.1em;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            padding: 120px 20px 60px 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-welcome {
+            color: #ffffff;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .hero-subtitle {
+            color: #e0e0e0;
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-btn-primary {
+            background: #000000;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            border: 1px solid #333333;
+        }
+
+        .hero-btn-primary:hover {
+            background: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        .hero-btn-secondary {
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .hero-btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .hero-commands-section {
+            padding: 20px 0 30px 0;
+            background: #0a0a0a;
+            position: relative;
+            z-index: 3;
+            margin-top: -20px;
+            clear: both;
+        }
+
+        .hero-commands {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-command {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+            z-index: 4;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-command.cased-highlight {
+            background: rgba(39, 202, 63, 0.1);
+            border: 1px solid rgba(39, 202, 63, 0.3);
+            position: relative;
+            z-index: 5;
+        }
+
+        .command-label {
+            color: #667eea;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cased-highlight .command-label {
+            color: #27ca3f;
+        }
+
+        .command-text {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #ffffff;
+        }
+
+        .hero-command.cased-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #27ca3f, #22c55e);
+            border-radius: 8px 8px 0 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .section {
+            padding: 80px 20px 60px 20px;
+            background: #0a0a0a;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section h2 {
+            color: #ffffff;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            justify-items: center;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+            justify-items: center;
+        }
+
+        .center-card {
+            grid-column: 1 / -1;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card.caser-card {
+            border: 1px solid rgba(39, 202, 63, 0.3);
+            background: rgba(39, 202, 63, 0.05);
+        }
+
+        .caser-card .feature-title {
+            color: #27ca3f;
+        }
+
+        .feature-title {
+            color: #ffffff;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #b0b0b0;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .philosophy-title {
+            text-align: center;
+            font-style: italic;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            position: relative;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .philosophy-title::before {
+            content: '"';
+            position: absolute;
+            left: -25px;
+            top: -8px;
+            font-size: 2.2em;
+            color: #667eea;
+            font-family: 'Georgia', serif;
+        }
+
+        .philosophy-title::after {
+            content: '"';
+            position: absolute;
+            right: -25px;
+            top: -8px;
+            font-size: 2.2em;
+            color: #667eea;
+            font-family: 'Georgia', serif;
+        }
+
+        .philosophy-text {
+            text-align: center;
+            font-style: italic;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-top: 15px;
+            padding: 0 20px;
+        }
+
+        .terminal {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #ffffff;
+            margin: 15px 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27ca3f; }
+
+        .terminal-content {
+            color: #b0b0b0;
+        }
+
+        .terminal-prompt {
+            color: #667eea;
+        }
+
+        .terminal-command {
+            color: #ffffff;
+        }
+
+        .terminal-output {
+            color: #c3e88d;
+        }
+
+        .highlight-box {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .highlight-box h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box p {
+            color: #e0e0e0;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            padding: 80px 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+        }
+
+        .contact-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section h2 {
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #000000;
+            padding: 40px 20px;
+            text-align: center;
+            color: #666666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 15px 40px 15px;
+            }
+
+            .hero-welcome {
+                font-size: 2em;
+                margin-bottom: 8px;
+            }
+
+            .hero-commands-section {
+                padding: 30px 0;
+                margin-top: -10px;
+            }
+
+            .hero-commands {
+                max-width: 90%;
+                gap: 15px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                justify-items: center;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                justify-items: center;
+            }
+
+            .feature-card {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .philosophy-title {
+                font-size: 1.4em;
+            }
+
+            .philosophy-title::before,
+            .philosophy-title::after {
+                font-size: 1.8em;
+                left: -15px;
+                right: -15px;
+            }
+
+            .philosophy-text {
+                font-size: 0.9em;
+                padding: 0 10px;
+            }
+
+            .navbar-links {
+                gap: 15px;
+                position: static;
+                transform: none;
+                order: 1;
+            }
+
+            .navbar-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-links">
+                <a href="#about">About</a>
+                <a href="#apps">Apps</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="navbar-actions">
+                <a href="mailto:lirix.ai@proton.me" class="navbar-download">
+                    <span class="user-icon"></span>
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-welcome">Welcome to Privacy First Development</div>
+            <p class="hero-subtitle">Mobile App Privacy & Data Protection</p>
+            <div class="hero-buttons">
+                <a href="#about" class="hero-btn-primary">
+                    <span class="apple-logo"></span>
+                    Learn More
+                </a>
+                <a href="#contact" class="hero-btn-secondary">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Commands Section -->
+    <section class="hero-commands-section">
+        <div class="container">
+            <div class="hero-commands">
+                <div class="hero-command">
+                    <div class="command-label">Portfolio</div>
+                    <div class="command-text">40+ iOS Apps in Development</div>
+                </div>
+                <div class="hero-command cased-highlight">
+                    <div class="command-label">CASER Project</div>
+                    <div class="command-text">Case Automated Search & Research for Federal Courts</div>
+                </div>
+                <div class="hero-command">
+                    <div class="command-label">Publishing Pipeline</div>
+                    <div class="command-text">Actively Publishing Apps to App Store</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apps Section -->
+    <section class="section" id="apps">
+        <div class="container">
+            <h2>My Apps</h2>
+            <div class="apps-grid">
+                <div class="feature-card">
+                    <div class="feature-title">Currency Converter - iOS App</div>
+                    <div class="feature-description">
+                        Clean, fast currency conversion for travelers and international users. Features real-time exchange rates,
+                        offline functionality, and a privacy-focused design that collects minimal data.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">App></span> <span class="terminal-command">features CurrencyConverter</span></div>
+                            <div class="terminal-output">✓ Real-time exchange rates</div>
+                            <div class="terminal-output">✓ 13+ currencies supported</div>
+                            <div class="terminal-output">✓ Offline functionality</div>
+                            <div class="terminal-output">✓ Privacy-focused design</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">CASER - macOS Legal Research</div>
+                    <div class="feature-description">
+                        Revolutionary macOS application for legal professionals. Monitor U.S. federal court dockets in real-time,
+                        track cases and keywords, receive instant notifications - all without PACER fees. True public access to court records.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">CASER></span> <span class="terminal-command">court_status</span></div>
+                            <div class="terminal-output">✓ All U.S. District Courts supported</div>
+                            <div class="terminal-output">✓ Real-time notifications</div>
+                            <div class="terminal-output">✓ macOS 14.0+ compatible</div>
+                            <div class="terminal-output">✓ Zero PACER costs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Portfolio Highlights</div>
+                    <div class="feature-description">
+                        From productivity tools to health & fitness apps, our portfolio spans multiple categories.
+                        Each app demonstrates unique problem-solving and user-centric design principles.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Portfolio></span> <span class="terminal-command">list_categories</span></div>
+                            <div class="terminal-output">• Productivity & Utilities</div>
+                            <div class="terminal-output">• Health & Fitness</div>
+                            <div class="terminal-output">• Entertainment & Media</div>
+                            <div class="terminal-output">• Education & Learning</div>
+                            <div class="terminal-output">• Developer Tools</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Future Projects</div>
+                    <div class="feature-description">
+                        Currently developing additional apps focused on everyday life improvements.
+                        Each new project maintains the same commitment to privacy and user experience.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Projects></span> <span class="terminal-command">list_upcoming</span></div>
+                            <div class="terminal-output">• Working on new iOS apps</div>
+                            <div class="terminal-output">• Privacy-first approach</div>
+                            <div class="terminal-output">• Everyday life solutions</div>
+                            <div class="terminal-output">• User experience focused</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>About Our Mission</h2>
+            <div class="features-grid">
+                <div class="feature-card gradient-left">
+                    <div class="feature-title">Our Approach</div>
+                    <div class="feature-description">
+                        A dedicated iOS development team focused on creating innovative mobile applications with a strong commitment to user experience, privacy, and meaningful solutions.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">iOS></span> <span class="terminal-command">show_experience</span></div>
+                            <div class="terminal-output">Developer: iOS Specialist</div>
+                            <div class="terminal-output">Apps: 40+ in Development</div>
+                            <div class="terminal-output">Focus: Everyday life apps</div>
+                            <div class="terminal-output">Mission: Privacy & Quality</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card gradient-right">
+                    <div class="feature-title">Privacy Commitment</div>
+                    <div class="feature-description">
+                        Every app is designed with privacy as the foundation. No unnecessary data collection,
+                        transparent policies, and user control over their information.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Privacy></span> <span class="terminal-command">check_policy</span></div>
+                            <div class="terminal-output">✓ No personal data collection</div>
+                            <div class="terminal-output">✓ Transparent data usage</div>
+                            <div class="terminal-output">✓ User control priority</div>
+                            <div class="terminal-output">✓ Regular privacy audits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card center-card">
+                    <div class="feature-title philosophy-title">Development Philosophy</div>
+                    <div class="feature-description philosophy-text">
+                        "Creating apps that solve real problems while maintaining the highest standards of privacy and user experience.
+                        Each application is crafted with attention to detail and genuine care for the end user."
+                    </div>
+                </div>
+
+                <div class="feature-card gradient-left">
+                    <div class="feature-title">CASER - macOS Legal Research Tool</div>
+                    <div class="feature-description">
+                        Flagship macOS application revolutionizing legal research. CASER enables real-time monitoring of U.S. Court dockets without PACER fees, providing instant notifications for case updates, new filings, and keyword matches across all federal district courts.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">CASER></span> <span class="terminal-command">show_features</span></div>
+                            <div class="terminal-output">✓ Real-time docket monitoring</div>
+                            <div class="terminal-output">✓ Native macOS notifications</div>
+                            <div class="terminal-output">✓ All U.S. District Courts</div>
+                            <div class="terminal-output">✓ Keyword & case tracking</div>
+                            <div class="terminal-output">✓ No PACER fees required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card gradient-right">
+                    <div class="feature-title">App Store Publishing Pipeline</div>
+                    <div class="feature-description">
+                        With over 40 apps developed, actively working through the App Store publishing process.
+                        Each app goes through rigorous testing, optimization, and submission preparation.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Publish></span> <span class="terminal-command">status_check</span></div>
+                            <div class="terminal-output">• 40+ apps in development</div>
+                            <div class="terminal-output">• Publishing pipeline active</div>
+                            <div class="terminal-output">• App Store optimization</div>
+                            <div class="terminal-output">• Quality assurance complete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="section" id="privacy">
+        <div class="container">
+            <h2>Privacy Policy</h2>
+
+            <div class="highlight-box">
+                <h3>Privacy First Development</h3>
+                <p>We believe that user privacy should be the foundation of every application. Our apps are designed to collect only the minimum data necessary for functionality, and we are transparent about how any data is used.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-title">Data Collection</div>
+                    <div class="feature-description">
+                        Our applications collect only essential data for core functionality. No personal information is stored unless explicitly required for the app's purpose.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Privacy></span> <span class="terminal-command">data_collection</span></div>
+                            <div class="terminal-output">• Location data (only with permission)</div>
+                            <div class="terminal-output">• Device info (for functionality)</div>
+                            <div class="terminal-output">• Usage data (for improvements)</div>
+                            <div class="terminal-output">• No personal data stored</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Data Security</div>
+                    <div class="feature-description">
+                        All data transmission is encrypted, and we follow industry-standard security practices to protect user information.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Security></span> <span class="terminal-command">encryption_status</span></div>
+                            <div class="terminal-output">✓ HTTPS encryption</div>
+                            <div class="terminal-output">✓ Secure data storage</div>
+                            <div class="terminal-output">✓ Regular security audits</div>
+                            <div class="terminal-output">✓ User data protection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card center-card">
+                    <div class="feature-title">User Rights</div>
+                    <div class="feature-description">
+                        Users have full control over their data. You can request data deletion, disable permissions, and access information about data usage at any time.
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot red"></div>
+                                <div class="terminal-dot yellow"></div>
+                                <div class="terminal-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">Rights></span> <span class="terminal-command">user_controls</span></div>
+                            <div class="terminal-output">• Delete data anytime</div>
+                            <div class="terminal-output">• Disable permissions</div>
+                            <div class="terminal-output">• Request data access</div>
+                            <div class="terminal-output">• Contact for privacy concerns</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a></p>
+                <p><strong>Focus:</strong> Privacy-focused mobile applications</p>
+                <p><strong>Commitment:</strong> User privacy and data protection</p>
+                <p style="margin-top: 20px; font-style: italic;">We are always interested in feedback, collaboration opportunities, and helping users with privacy concerns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 All rights reserved. | <a href="#privacy" style="color: #ffffff; text-decoration: none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
