@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
+    <title>App Developer - Terms & Privacy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -25,6 +25,37 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .legal-disclaimer-banner {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #ffffff;
+            padding: 20px;
+            border-bottom: 3px solid #ffffff;
+            position: relative;
+            z-index: 1001;
+            font-size: 0.85em;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .legal-disclaimer-banner p {
+            margin: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .legal-disclaimer-banner a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .legal-disclaimer-banner strong {
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 8px;
         }
 
         .navbar {
@@ -526,6 +557,11 @@
         }
 
         @media (max-width: 768px) {
+            .legal-disclaimer-banner {
+                padding: 15px;
+                font-size: 0.75em;
+            }
+
             .hero {
                 padding: 100px 15px 40px 15px;
             }
@@ -593,6 +629,14 @@
     </style>
 </head>
 <body>
+    <!-- LEGAL DISCLAIMER BANNER -->
+    <div class="legal-disclaimer-banner">
+        <div class="container">
+            <p><strong>⚠️ CRITICAL LEGAL DISCLAIMER ⚠️</strong><br>
+            All applications provided "AS-IS" by individual developer (NOT an LLC or corporation) with ABSOLUTELY NO WARRANTIES. No guarantees of accuracy, reliability, security, or fitness for any purpose. NOT professional, legal, financial, or medical advice. Use entirely at YOUR OWN RISK. By using these applications, you agree to waive all claims for damages or losses. Maximum liability: $50 USD or amount paid, whichever is less.</p>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-content">
@@ -614,8 +658,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-welcome">Welcome to Privacy First Development</div>
-            <p class="hero-subtitle">Mobile App Privacy & Data Protection</p>
+            <div class="hero-welcome">Individual iOS App Developer</div>
+            <p class="hero-subtitle">Experimental Apps - Use At Your Own Risk<br><small style="font-size: 0.75em; opacity: 0.9;">⚠️ All apps provided AS-IS by individual developer (not LLC). No warranties. Not professional advice.</small></p>
             <div class="hero-buttons">
                 <a href="#about" class="hero-btn-primary">
                     <span class="apple-logo"></span>
@@ -634,15 +678,15 @@
             <div class="hero-commands">
                 <div class="hero-command">
                     <div class="command-label">Portfolio</div>
-                    <div class="command-text">40+ iOS Apps in Development</div>
+                    <div class="command-text">40+ Experimental iOS Apps</div>
                 </div>
                 <div class="hero-command cased-highlight">
-                    <div class="command-label">CASER Project</div>
-                    <div class="command-text">Case Automated Search & Research for Federal Courts</div>
+                    <div class="command-label">CASER Project - NOT LEGAL ADVICE</div>
+                    <div class="command-text">Experimental Court Monitoring Tool (Beta)</div>
                 </div>
                 <div class="hero-command">
-                    <div class="command-label">Publishing Pipeline</div>
-                    <div class="command-text">Actively Publishing Apps to App Store</div>
+                    <div class="command-label">Development Status</div>
+                    <div class="command-text">Apps in Various Beta Stages - AS-IS</div>
                 </div>
             </div>
         </div>
@@ -656,8 +700,7 @@
                 <div class="feature-card">
                     <div class="feature-title">Currency Converter - iOS App</div>
                     <div class="feature-description">
-                        Clean, fast currency conversion for travelers and international users. Features real-time exchange rates,
-                        offline functionality, and a privacy-focused design that collects minimal data.
+                        Experimental currency converter app. Exchange rates may be inaccurate or outdated. NOT FOR FINANCIAL DECISIONS. Provided AS-IS without warranties. Not financial advice. Use at own risk.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -669,10 +712,11 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">App></span> <span class="terminal-command">features CurrencyConverter</span></div>
-                            <div class="terminal-output">✓ Real-time exchange rates</div>
-                            <div class="terminal-output">✓ 13+ currencies supported</div>
-                            <div class="terminal-output">✓ Offline functionality</div>
-                            <div class="terminal-output">✓ Privacy-focused design</div>
+                            <div class="terminal-output">• Exchange rates (may be inaccurate)</div>
+                            <div class="terminal-output">• Multiple currencies</div>
+                            <div class="terminal-output">• Offline mode (data may be stale)</div>
+                            <div class="terminal-output">• AS-IS - No warranties</div>
+                            <div class="terminal-output">• NOT financial advice</div>
                         </div>
                     </div>
                 </div>
@@ -680,8 +724,7 @@
                 <div class="feature-card">
                     <div class="feature-title">CASER - macOS Legal Research</div>
                     <div class="feature-description">
-                        Revolutionary macOS application for legal professionals. Monitor U.S. federal court dockets in real-time,
-                        track cases and keywords, receive instant notifications - all without PACER fees. True public access to court records.
+                        Experimental macOS court monitoring tool. NOT LEGAL ADVICE. Data may be inaccurate, incomplete, or outdated. Not responsible for missed filings or errors. Provided AS-IS. Consult licensed attorneys for legal matters. Not a substitute for official PACER.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -691,10 +734,12 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">CASER></span> <span class="terminal-command">court_status</span></div>
-                            <div class="terminal-output">✓ All U.S. District Courts supported</div>
-                            <div class="terminal-output">✓ Real-time notifications</div>
-                            <div class="terminal-output">✓ macOS 14.0+ compatible</div>
-                            <div class="terminal-output">✓ Zero PACER costs</div>
+                            <div class="terminal-output">• Court data (may be incomplete)</div>
+                            <div class="terminal-output">• Notifications (may be delayed)</div>
+                            <div class="terminal-output">• Beta software</div>
+                            <div class="terminal-output">• NOT LEGAL ADVICE</div>
+                            <div class="terminal-output">• No warranty of accuracy</div>
+                            <div class="terminal-output">• Use official PACER for legal work</div>
                         </div>
                     </div>
                 </div>
@@ -702,8 +747,7 @@
                 <div class="feature-card">
                     <div class="feature-title">Portfolio Highlights</div>
                     <div class="feature-description">
-                        From productivity tools to health & fitness apps, our portfolio spans multiple categories.
-                        Each app demonstrates unique problem-solving and user-centric design principles.
+                        Experimental apps across multiple categories in development by individual developer. Apps provided AS-IS without warranties. No guarantees of functionality, accuracy, or fitness for purpose. Use at own risk.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -727,8 +771,7 @@
                 <div class="feature-card">
                     <div class="feature-title">Future Projects</div>
                     <div class="feature-description">
-                        Currently developing additional apps focused on everyday life improvements.
-                        Each new project maintains the same commitment to privacy and user experience.
+                        Additional experimental apps in development. No guarantees of completion, release, or App Store availability. All apps provided AS-IS if/when released.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -741,9 +784,9 @@
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">Projects></span> <span class="terminal-command">list_upcoming</span></div>
                             <div class="terminal-output">• Working on new iOS apps</div>
-                            <div class="terminal-output">• Privacy-first approach</div>
-                            <div class="terminal-output">• Everyday life solutions</div>
-                            <div class="terminal-output">• User experience focused</div>
+                            <div class="terminal-output">• Experimental development</div>
+                            <div class="terminal-output">• No release guarantees</div>
+                            <div class="terminal-output">• AS-IS software</div>
                         </div>
                     </div>
                 </div>
@@ -754,12 +797,12 @@
     <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
-            <h2>About Our Mission</h2>
+            <h2>About My Work</h2>
             <div class="features-grid">
                 <div class="feature-card gradient-left">
-                    <div class="feature-title">Our Approach</div>
+                    <div class="feature-title">My Approach</div>
                     <div class="feature-description">
-                        A dedicated iOS development team focused on creating innovative mobile applications with a strong commitment to user experience, privacy, and meaningful solutions.
+                        An individual iOS developer creating experimental applications. Apps are provided AS-IS without warranties. No guarantees of functionality, security, or continued availability. Not a team or company.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -771,19 +814,18 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">iOS></span> <span class="terminal-command">show_experience</span></div>
-                            <div class="terminal-output">Developer: iOS Specialist</div>
-                            <div class="terminal-output">Apps: 40+ in Development</div>
-                            <div class="terminal-output">Focus: Everyday life apps</div>
-                            <div class="terminal-output">Mission: Privacy & Quality</div>
+                            <div class="terminal-output">Developer: Individual (Not LLC/Company)</div>
+                            <div class="terminal-output">Apps: 40+ Experimental Projects</div>
+                            <div class="terminal-output">Status: Development/Beta Phase</div>
+                            <div class="terminal-output">Disclaimer: AS-IS, No Warranties</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="feature-card gradient-right">
-                    <div class="feature-title">Privacy Commitment</div>
+                    <div class="feature-title">Privacy Approach</div>
                     <div class="feature-description">
-                        Every app is designed with privacy as the foundation. No unnecessary data collection,
-                        transparent policies, and user control over their information.
+                        Apps use Apple's standard frameworks which may collect analytics data. As an individual developer, I do not collect personal data to my own servers. No warranties regarding privacy or data security are provided. All apps AS-IS.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -795,10 +837,11 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">Privacy></span> <span class="terminal-command">check_policy</span></div>
-                            <div class="terminal-output">✓ No personal data collection</div>
-                            <div class="terminal-output">✓ Transparent data usage</div>
-                            <div class="terminal-output">✓ User control priority</div>
-                            <div class="terminal-output">✓ Regular privacy audits</div>
+                            <div class="terminal-output">• Standard Apple analytics only</div>
+                            <div class="terminal-output">• No developer-owned servers</div>
+                            <div class="terminal-output">• No independent audits</div>
+                            <div class="terminal-output">• AS-IS - No warranties</div>
+                            <div class="terminal-output">• See Apple Privacy Policy</div>
                         </div>
                     </div>
                 </div>
@@ -806,15 +849,14 @@
                 <div class="feature-card center-card">
                     <div class="feature-title philosophy-title">Development Philosophy</div>
                     <div class="feature-description philosophy-text">
-                        "Creating apps that solve real problems while maintaining the highest standards of privacy and user experience.
-                        Each application is crafted with attention to detail and genuine care for the end user."
+                        "Innovative iOS and macOS apps to help make life easier."
                     </div>
                 </div>
 
                 <div class="feature-card gradient-left">
                     <div class="feature-title">CASER - macOS Legal Research Tool</div>
                     <div class="feature-description">
-                        Flagship macOS application revolutionizing legal research. CASER enables real-time monitoring of U.S. Court dockets without PACER fees, providing instant notifications for case updates, new filings, and keyword matches across all federal district courts.
+                        Experimental court monitoring tool. NOT LEGAL ADVICE. Data may be inaccurate, delayed, or incomplete. Not responsible for missed deadlines, filings, or legal consequences. NOT a substitute for official PACER access or licensed legal counsel. Provided AS-IS with no warranties.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -826,11 +868,12 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">CASER></span> <span class="terminal-command">show_features</span></div>
-                            <div class="terminal-output">✓ Real-time docket monitoring</div>
-                            <div class="terminal-output">✓ Native macOS notifications</div>
-                            <div class="terminal-output">✓ All U.S. District Courts</div>
-                            <div class="terminal-output">✓ Keyword & case tracking</div>
-                            <div class="terminal-output">✓ No PACER fees required</div>
+                            <div class="terminal-output">• Court monitoring (may be delayed)</div>
+                            <div class="terminal-output">• Notifications (no guarantee)</div>
+                            <div class="terminal-output">• Beta software - use cautiously</div>
+                            <div class="terminal-output">• NOT LEGAL ADVICE</div>
+                            <div class="terminal-output">• No warranty of completeness</div>
+                            <div class="terminal-output">• Consult attorneys for legal work</div>
                         </div>
                     </div>
                 </div>
@@ -838,8 +881,7 @@
                 <div class="feature-card gradient-right">
                     <div class="feature-title">App Store Publishing Pipeline</div>
                     <div class="feature-description">
-                        With over 40 apps developed, actively working through the App Store publishing process.
-                        Each app goes through rigorous testing, optimization, and submission preparation.
+                        Multiple experimental apps in various development stages. No guarantee of App Store approval or continued availability. Apps may be removed at any time. Provided AS-IS.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -851,10 +893,11 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">Publish></span> <span class="terminal-command">status_check</span></div>
-                            <div class="terminal-output">• 40+ apps in development</div>
-                            <div class="terminal-output">• Publishing pipeline active</div>
-                            <div class="terminal-output">• App Store optimization</div>
-                            <div class="terminal-output">• Quality assurance complete</div>
+                            <div class="terminal-output">• 40+ experimental projects</div>
+                            <div class="terminal-output">• Beta/development phase</div>
+                            <div class="terminal-output">• No guarantee of release</div>
+                            <div class="terminal-output">• AS-IS software</div>
+                            <div class="terminal-output">• May be discontinued anytime</div>
                         </div>
                     </div>
                 </div>
@@ -865,18 +908,18 @@
     <!-- Privacy Section -->
     <section class="section" id="privacy">
         <div class="container">
-            <h2>Privacy Policy</h2>
+            <h2>Privacy Disclaimer</h2>
 
             <div class="highlight-box">
-                <h3>Privacy First Development</h3>
-                <p>We believe that user privacy should be the foundation of every application. Our apps are designed to collect only the minimum data necessary for functionality, and we are transparent about how any data is used.</p>
+                <h3>⚠️ IMPORTANT DISCLAIMER</h3>
+                <p><strong>These applications are provided AS-IS by an individual developer (not an LLC or corporation) with ABSOLUTELY NO WARRANTIES of any kind.</strong> No guarantees of accuracy, reliability, security, or fitness for any purpose. NOT professional, legal, financial, or medical advice. Use entirely at YOUR OWN RISK. Maximum liability: $50 USD or amount paid, whichever is less.</p>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-title">Data Collection</div>
                     <div class="feature-description">
-                        Our applications collect only essential data for core functionality. No personal information is stored unless explicitly required for the app's purpose.
+                        These applications may collect standard Apple analytics data (crash reports, basic usage statistics) managed entirely by Apple's frameworks. As an individual developer, I do not operate servers to collect, store, or access your personal data. All data collection is handled by Apple in accordance with their Privacy Policy. Apps are provided AS-IS with no guarantees of privacy, security, or functionality.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -888,10 +931,11 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">Privacy></span> <span class="terminal-command">data_collection</span></div>
-                            <div class="terminal-output">• Location data (only with permission)</div>
-                            <div class="terminal-output">• Device info (for functionality)</div>
-                            <div class="terminal-output">• Usage data (for improvements)</div>
-                            <div class="terminal-output">• No personal data stored</div>
+                            <div class="terminal-output">• Apple crash analytics (automatic)</div>
+                            <div class="terminal-output">• Apple usage statistics (standard)</div>
+                            <div class="terminal-output">• Device OS version (compatibility)</div>
+                            <div class="terminal-output">• No developer-controlled servers</div>
+                            <div class="terminal-output">• Subject to Apple's Privacy Policy</div>
                         </div>
                     </div>
                 </div>
@@ -899,7 +943,7 @@
                 <div class="feature-card">
                     <div class="feature-title">Data Security</div>
                     <div class="feature-description">
-                        All data transmission is encrypted, and we follow industry-standard security practices to protect user information.
+                        Data security is managed by Apple's standard frameworks. Apps use Apple's encryption standards. As an individual developer, I do not control data transmission or storage. No guarantees of security are provided. Apps are provided AS-IS.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -911,10 +955,11 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">Security></span> <span class="terminal-command">encryption_status</span></div>
-                            <div class="terminal-output">✓ HTTPS encryption</div>
-                            <div class="terminal-output">✓ Secure data storage</div>
-                            <div class="terminal-output">✓ Regular security audits</div>
-                            <div class="terminal-output">✓ User data protection</div>
+                            <div class="terminal-output">• Apple's standard encryption</div>
+                            <div class="terminal-output">• iOS/macOS security frameworks</div>
+                            <div class="terminal-output">• No independent security audits</div>
+                            <div class="terminal-output">• No warranties or guarantees</div>
+                            <div class="terminal-output">• Apps provided AS-IS</div>
                         </div>
                     </div>
                 </div>
@@ -922,7 +967,7 @@
                 <div class="feature-card center-card">
                     <div class="feature-title">User Rights</div>
                     <div class="feature-description">
-                        Users have full control over their data. You can request data deletion, disable permissions, and access information about data usage at any time.
+                        Users control data through iOS/macOS system settings. For data managed by Apple, contact Apple Support. I, as the developer, do not have access to your personal data or ability to delete data stored by Apple. Manage app permissions through your device settings.
                     </div>
                     <div class="terminal">
                         <div class="terminal-header">
@@ -934,10 +979,10 @@
                         </div>
                         <div class="terminal-content">
                             <div><span class="terminal-prompt">Rights></span> <span class="terminal-command">user_controls</span></div>
-                            <div class="terminal-output">• Delete data anytime</div>
-                            <div class="terminal-output">• Disable permissions</div>
-                            <div class="terminal-output">• Request data access</div>
-                            <div class="terminal-output">• Contact for privacy concerns</div>
+                            <div class="terminal-output">• Manage via iOS/macOS Settings</div>
+                            <div class="terminal-output">• Contact Apple for data requests</div>
+                            <div class="terminal-output">• Developer has no data access</div>
+                            <div class="terminal-output">• No warranties provided</div>
                         </div>
                     </div>
                 </div>
@@ -948,12 +993,12 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h2>Contact</h2>
             <div class="contact-info">
                 <p><strong>Email:</strong> <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a></p>
-                <p><strong>Focus:</strong> Privacy-focused mobile applications</p>
-                <p><strong>Commitment:</strong> User privacy and data protection</p>
-                <p style="margin-top: 20px; font-style: italic;">We are always interested in feedback, collaboration opportunities, and helping users with privacy concerns.</p>
+                <p><strong>Status:</strong> Individual Developer (Not LLC/Company)</p>
+                <p><strong>Apps:</strong> Provided AS-IS with no warranties</p>
+                <p style="margin-top: 20px; font-style: italic;">Contact for general inquiries only. No legal, financial, or professional advice provided. Response not guaranteed. By contacting, you agree to Terms of Service.</p>
             </div>
         </div>
     </section>
@@ -961,7 +1006,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 All rights reserved. | <a href="#privacy" style="color: #ffffff; text-decoration: none;">Privacy Policy</a></p>
+            <p>&copy; 2025 Individual Developer. All apps AS-IS. No warranties. | <a href="#privacy" style="color: #ffffff; text-decoration: none;">Privacy Disclaimer</a> | Use at own risk.</p>
         </div>
     </footer>
 </body>
