@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
+
   <title>Lirix App Publishing</title>
+  <meta name="description" content="Lirix App Publishing — privacy‑respecting, human‑friendly apps for iOS and macOS." />
+  <meta name="author" content="Lirix App Publishing" />
 
   <!--
     Single-file site
@@ -165,6 +168,9 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
+    /* Better anchor positioning with sticky header */
+    [id] { scroll-margin-top: 92px; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -332,7 +338,20 @@
       min-width: 180px;
     }
 
-    
+    /* Subtle macOS-like brand mark (no external assets) */
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
+      background:
+        radial-gradient(14px 14px at 30% 30%, color-mix(in srgb, var(--accent1) 70%, transparent), transparent 70%),
+        radial-gradient(16px 16px at 70% 35%, color-mix(in srgb, var(--accent3) 65%, transparent), transparent 70%),
+        radial-gradient(18px 18px at 55% 75%, color-mix(in srgb, var(--accent2) 55%, transparent), transparent 72%),
+        color-mix(in srgb, var(--bg2) 70%, transparent);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+    }
+
     .brand-title {
       font-weight: 650;
       letter-spacing: -0.01em;
@@ -365,6 +384,12 @@
       background: color-mix(in srgb, var(--bg2) 75%, transparent);
       border: 1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
       padding: 7px 9px;
+    }
+
+    /* Active section state (set by JS via aria-current="page") */
+    .nav a.navlink[aria-current="page"] {
+      background: color-mix(in srgb, var(--bg2) 88%, transparent);
+      border: 1px solid color-mix(in srgb, var(--stroke-strong) 70%, transparent);
     }
 
     .nav-actions {
@@ -467,6 +492,8 @@
       transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
     }
 
+    button.btn { cursor: pointer; font-family: inherit; }
+
     .btn:hover {
       transform: translateY(-1px);
       background: color-mix(in srgb, var(--bg2) 92%, transparent);
@@ -527,6 +554,8 @@
       .grid.two,
       .grid.three { grid-template-columns: 1fr; }
     }
+
+    .grid .full { grid-column: 1 / -1; }
 
     .lead {
       font-size: 1.05rem;
@@ -634,7 +663,7 @@
     .acc-panel {
       padding: 0 14px 14px;
       color: var(--muted);
-      display: none;
+      display: block;
     }
 
     .acc-panel[hidden] { display: none; }
@@ -727,6 +756,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="bg" aria-hidden="true"></div>
 
@@ -738,8 +768,10 @@
        ============================== -->
   <header>
     <div class="container nav">
+      <a class="brand" href="#home" aria-label="Lirix App Publishing — Home">
+        <span class="brand-mark" aria-hidden="true"></span>
         <span>
-          <span class="brand-title">Lirix AI</span>
+          <span class="brand-title">Lirix</span>
           <span class="brand-sub">App Publishing</span>
         </span>
       </a>
@@ -774,13 +806,13 @@
          ============================== -->
     <section class="hero">
       <div class="container">
-        <div class="glass hero-wrap" role="region" aria-label="Lirix AI hero">
+        <div class="glass hero-wrap" role="region" aria-label="Lirix App Publishing hero">
           <div>
-            <div class="kicker">Apple App Store developer brand</div>
-            <h1>Lirix AI App Publishing</h1>
+            <div class="kicker">Independent App Store publishing label</div>
+            <h1>Lirix App Publishing</h1>
             <p class="lead">
-              We build and publish thoughtfully designed apps with a focus on clarity, accessibility, and ongoing refinement.
-              Each release is an opportunity to learn, iterate, and improve.
+              We design and publish apps that bring enjoyment, purpose, or practical utility into everyday life — with a
+              strong emphasis on accessibility, calm UI, and privacy‑respecting defaults.
             </p>
 
             <div class="pill-row" aria-label="Focus areas">
@@ -827,8 +859,17 @@
               This page is fully self-contained (one HTML file) and follows a macOS/iOS-inspired visual language.
             </p>
             <p class="muted">
-              Need help? Email <code>lirix.ai@proton.me</code>.
+              Need help? Email <code id="supportEmail">lirix.ai@proton.me</code>.
             </p>
+            <div class="cta-row" aria-label="Quick actions">
+              <button class="btn" type="button" data-copy="lirix.ai@proton.me" aria-label="Copy support email">
+                Copy email
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M8 8h10v12H8z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M6 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" fill="none" stroke="currentColor" stroke-width="1.7" opacity="0.85"/>
+                </svg>
+              </button>
+            </div>
           </aside>
         </div>
       </div>
@@ -844,12 +885,16 @@
             <div class="kicker">About</div>
             <h2 id="about-title">A practical philosophy of iteration</h2>
             <p class="lead">
-              Lirix is built around rapid learning loops: prototype, validate, refine. We aim to ship improvements thoughtfully,
-              while staying flexible as real-world feedback arrives.
+              Lirix App Publishing is built around rapid learning loops: prototype, validate, refine.
+              We aim to ship improvements thoughtfully while staying flexible as real-world feedback arrives.
             </p>
             <p>
               We prefer clear interfaces, consistent patterns, and responsible defaults. When a decision is uncertain,
               we choose the option that preserves user control and reduces surprises.
+            </p>
+            <p>
+              Our apps are part of a larger vision: experiences that add enjoyment, purpose, or utility — without turning
+              privacy into an afterthought.
             </p>
           </div>
 
@@ -1004,12 +1049,12 @@
             <h3>Legal disclaimer</h3>
             <p>
               THE SOFTWARE AND SERVICES ARE PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND.
-              TO THE MAXIMUM EXTENT PERMITTED BY LAW, LIRIX AI APP PUBLISHING DISCLAIMS ALL WARRANTIES,
+              TO THE MAXIMUM EXTENT PERMITTED BY LAW, LIRIX APP PUBLISHING DISCLAIMS ALL WARRANTIES,
               EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION IMPLIED WARRANTIES OF MERCHANTABILITY,
               FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
             </p>
             <p>
-              USE AT YOUR OWN RISK. IN NO EVENT SHALL LIRIX AI APP PUBLISHING BE LIABLE FOR ANY INDIRECT,
+              USE AT YOUR OWN RISK. IN NO EVENT SHALL LIRIX APP PUBLISHING BE LIABLE FOR ANY INDIRECT,
               INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES,
               WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE
               LOSSES, RESULTING FROM (A) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SOFTWARE;
@@ -1027,66 +1072,158 @@
     <section id="privacy" class="section" aria-labelledby="privacy-title">
       <div class="container">
         <div class="kicker">Privacy</div>
-        <h2 id="privacy-title">Privacy-first defaults</h2>
+        <h2 id="privacy-title">Privacy Policy</h2>
         <p class="lead">
-          By default, we do not collect personal data. Some optional features or third-party services may process limited
-          information to function (for example, to deliver content or provide diagnostics), and we aim to be transparent
-          about those cases.
+          Lirix App Publishing prioritizes privacy, clarity, and user control. Many of our apps are designed to work
+          without collecting personal information. When a feature needs data, we aim to be transparent and minimize
+          collection.
         </p>
 
-        <div class="grid two">
+        <p class="notice">
+          <strong>Last updated:</strong>
+          <time datetime="2025-12-14">December 14, 2025</time>
+        </p>
+
+        <div class="grid two" aria-label="Privacy summary">
           <div class="card">
-            <h3>No data collected by default</h3>
-            <p>
-              Unless a feature explicitly asks you to provide information, our apps are designed to function without
-              collecting personal data.
-            </p>
+            <h3>Quick summary</h3>
             <ul>
-              <li>No mandatory account creation.</li>
-              <li>No default tracking for advertising purposes.</li>
-              <li>Clear permission requests when needed.</li>
+              <li><strong>No selling</strong> of personal data.</li>
+              <li><strong>No advertising tracking</strong> by default.</li>
+              <li>No mandatory account creation unless an app truly needs it.</li>
+              <li>If a feature needs data, we explain why and request permission.</li>
+              <li>Privacy contact: <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a></li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>Third-party services</h3>
+            <h3>Website data (this page)</h3>
             <p>
-              Some apps may integrate third-party services (for example, to process payments, deliver content, or provide
-              crash diagnostics). If used, those services may receive limited data necessary to operate.
+              This website is a static, single-file page with no embedded analytics, ads, trackers, or third‑party scripts.
             </p>
             <ul>
-              <li>Service providers may process device or usage signals for reliability.</li>
-              <li>Where feasible, processing is minimized and scoped to the feature.</li>
-              <li>We avoid unnecessary sharing and prefer privacy-respecting options.</li>
+              <li>No cookies set by us.</li>
+              <li>No analytics SDKs.</li>
+              <li>No advertising pixels.</li>
             </ul>
           </div>
+        </div>
 
-          <div class="card">
-            <h3>Possible data processing</h3>
+        <div style="height: var(--space-4);"></div>
+
+        <div class="window" role="region" aria-labelledby="privacy-full-title">
+          <div class="window-bar">
+            <div class="traffic" aria-hidden="true">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="window-title">Privacy</div>
+            <div style="width: 40px;" aria-hidden="true"></div>
+          </div>
+
+          <div class="window-body">
+            <h3 id="privacy-full-title">Full policy</h3>
+
+            <h3>1) Scope</h3>
             <p>
-              Depending on the app and enabled features, data processing may include:
+              This policy covers (a) this website and (b) apps published under the Lirix App Publishing label on Apple
+              platforms. Individual apps may include additional in-app notices describing feature-specific behavior.
+              Our App Store product pages also disclose data practices through Apple’s privacy disclosures.
+            </p>
+
+            <h3>2) Data we collect, how we collect it, and how we use it</h3>
+            <p class="muted">
+              Apple requires privacy policies to clearly and explicitly identify what data (if any) is collected, how it’s
+              collected, and all uses of that data, plus retention/deletion and how to revoke consent/request deletion.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Support communications:</strong> If you email us, we receive your email address and the contents of
+                your message (and any attachments you choose to include). We use this to respond and troubleshoot.
+              </li>
+              <li>
+                <strong>Voluntary submissions in an app:</strong> Some apps may let you voluntarily submit text/files
+                (for example, feedback). We use it only for the purpose shown in the feature.
+              </li>
+              <li>
+                <strong>Diagnostics (optional / app-dependent):</strong> Some apps may collect crash reports or diagnostic
+                signals to improve stability. Where available, we prefer aggregated or minimized diagnostics.
+              </li>
+              <li>
+                <strong>Purchases:</strong> If an app offers in‑app purchases or subscriptions, Apple processes payment.
+                We don’t receive your full payment details.
+              </li>
+            </ul>
+
+            <h3>3) Third parties, sharing, and protection</h3>
+            <p>
+              We don’t sell personal data. We may share limited data with service providers only when necessary to operate
+              a feature (for example, crash diagnostics). If we share data with a third party, we require protections
+              consistent with this policy and Apple’s requirements.
+            </p>
+
+            <h3>4) Third‑party AI</h3>
+            <p>
+              If an app feature uses a third‑party AI service and would share personal data with that AI service, we will:
             </p>
             <ul>
-              <li>Crash logs or diagnostic reports to improve stability.</li>
-              <li>Feature usage signals to understand broad usability issues.</li>
-              <li>Content you voluntarily submit (for example, support messages).</li>
+              <li>Clearly disclose what personal data is shared and where it is sent.</li>
+              <li>Obtain explicit permission before sharing.</li>
+              <li>Offer an alternative path when feasible (for example, a manual workflow or an on-device mode).</li>
+            </ul>
+
+            <h3>5) Consent, permissions, and withdrawing consent</h3>
+            <ul>
+              <li>
+                <strong>System permissions:</strong> You can grant or revoke access (e.g., Photos, Location, Contacts)
+                through iOS/iPadOS/macOS Settings.
+              </li>
+              <li>
+                <strong>Optional features:</strong> Where an app offers optional data-related features, you can disable
+                them in-app when available.
+              </li>
+            </ul>
+
+            <h3>6) Tracking and advertising</h3>
+            <p>
+              We do not track users for advertising by default. If any app ever implements tracking as defined by Apple,
+              it will request permission using AppTrackingTransparency before tracking.
+            </p>
+
+            <h3>7) Accounts and account deletion (if applicable)</h3>
+            <p>
+              If an app supports account creation, it will also offer account deletion within the app, consistent with
+              Apple’s requirements. If an app doesn’t include significant account-based features, we aim to let people use
+              it without requiring a login.
+            </p>
+
+            <h3>8) Data retention and deletion requests</h3>
+            <ul>
+              <li>
+                <strong>Support emails:</strong> We keep support correspondence only as long as needed to resolve the issue,
+                maintain records of fixes, and prevent repeated problems. You may request deletion by emailing us.
+              </li>
+              <li>
+                <strong>Diagnostics (if used):</strong> Retention depends on the diagnostic provider/app feature, and we aim
+                to minimize retention where possible.
+              </li>
             </ul>
             <p class="notice">
-              Privacy contact: <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a>
+              Privacy contact and deletion requests: <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a>
             </p>
-          </div>
 
-          <div class="card">
-            <h3>Your choices</h3>
+            <h3>9) Security</h3>
             <p>
-              When optional features exist, you can choose whether to enable them. If you contact support, you control what
-              you share in your message.
+              We use reasonable safeguards designed to protect information we handle. No method of transmission or storage
+              is 100% secure, but we aim to minimize risk by minimizing collection.
             </p>
-            <ul>
-              <li>Review in-app settings where available.</li>
-              <li>Limit permissions to what is necessary for the feature.</li>
-              <li>Request assistance via the support email below.</li>
-            </ul>
+
+            <h3>10) Changes to this policy</h3>
+            <p>
+              If we change this policy, we will update this page and revise the “Last updated” date.
+            </p>
           </div>
         </div>
       </div>
@@ -1100,44 +1237,98 @@
         <div class="kicker">Terms</div>
         <h2 id="terms-title">Terms of Use</h2>
         <p class="lead">
-          These terms govern your use of Lirix App Publishing software and services. By using our apps, you agree to
-          comply with these terms.
+          These Terms of Use govern your use of apps published under the Lirix App Publishing label and this website.
+          By using our apps or website, you agree to these terms.
+        </p>
+
+        <p class="notice">
+          <strong>Last updated:</strong>
+          <time datetime="2025-12-14">December 14, 2025</time>
         </p>
 
         <div class="grid two">
           <div class="card">
-            <h3>Acceptable use</h3>
+            <h3>1) Who we are</h3>
+            <p>
+              “Lirix App Publishing” is an independent publishing label used to publish apps. References to “we” or “us”
+              mean the publisher identified on the relevant app’s App Store product page.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>2) Acceptable use</h3>
             <ul>
-              <li>Use the software for lawful purposes only.</li>
-              <li>Do not attempt to interfere with or disrupt the software or related systems.</li>
-              <li>Do not misuse features in a way that harms other users or third parties.</li>
+              <li>Use our apps and website for lawful purposes only.</li>
+              <li>Do not attempt to disrupt, exploit, or misuse our services.</li>
+              <li>Do not use our apps to infringe the rights of others.</li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>No unlawful use</h3>
+            <h3>3) App Store terms</h3>
             <p>
-              You may not use the software to engage in unlawful activity, violate applicable regulations, or infringe
-              the rights of others.
+              Apps distributed through the App Store may also be subject to Apple’s terms and platform rules.
+              In the event of a conflict for an App Store transaction, Apple’s platform terms and the applicable EULA
+              may control.
             </p>
           </div>
 
           <div class="card">
-            <h3>Limited liability</h3>
+            <h3>4) Purchases and subscriptions (if applicable)</h3>
             <p>
-              To the maximum extent permitted by law, Lirix App Publishing will not be liable for damages arising from
-              your use of the software, including loss of data, profits, or business interruption.
+              If an app offers in‑app purchases or subscriptions, billing is handled by the App Store.
+              Pricing, renewals, cancellations, and refunds are governed by Apple’s commerce flows and policies.
             </p>
           </div>
 
           <div class="card">
-            <h3>Changes</h3>
+            <h3>5) Privacy</h3>
+            <p>
+              Your use of our apps and website is also governed by our <a href="#privacy">Privacy Policy</a>.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>6) Disclaimers</h3>
+            <p>
+              The apps, website, and any related services are provided “AS IS” and “AS AVAILABLE,” without warranties of any
+              kind, to the maximum extent permitted by law.
+            </p>
+          </div>
+
+          <div class="card full">
+            <h3>7) Limitation of liability</h3>
+            <p>
+              To the maximum extent permitted by law, Lirix App Publishing will not be liable for indirect, incidental,
+              special, consequential, or punitive damages, or any loss of profits, revenues, data, use, or goodwill, arising
+              from or related to your use of (or inability to use) our apps or website.
+            </p>
+            <p class="muted">
+              Some jurisdictions do not allow certain limitations. In those jurisdictions, liability will be limited to the
+              greatest extent permitted by law.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>8) Changes</h3>
             <p>
               We may update these terms from time to time. Continued use after changes become effective constitutes
               acceptance of the updated terms.
             </p>
-            <p class="notice">
-              Governing law: these terms are governed by the laws of <strong>[Your Jurisdiction]</strong>.
+          </div>
+
+          <div class="card">
+            <h3>9) Governing law</h3>
+            <p>
+              These terms are governed by the laws of the jurisdiction where the publisher is established, without regard to
+              conflict-of-law rules, except where mandatory consumer protection laws apply.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>10) Contact</h3>
+            <p>
+              Support and legal inquiries: <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a>
             </p>
           </div>
         </div>
@@ -1152,44 +1343,395 @@
         <div class="kicker">EULA</div>
         <h2 id="eula-title">End User License Agreement</h2>
         <p class="lead">
-          This EULA provides a personal, non-transferable license to use Lirix App Publishing apps, subject to the
-          terms below.
+          Apps made available through the App Store are provided under a license. Unless a specific app displays a custom
+          EULA on its App Store product page, Apple’s Standard EULA applies.
+        </p>
+
+        <p class="notice">
+          <strong>Last updated:</strong>
+          <time datetime="2025-12-14">December 14, 2025</time>
         </p>
 
         <div class="grid two">
           <div class="card">
-            <h3>License</h3>
+            <h3>Apple Standard EULA</h3>
             <p>
-              We grant you a personal, non-exclusive, non-transferable, revocable license to install and use the software
-              for your own lawful, non-commercial or personal use, unless otherwise stated within a specific app.
+              Apple provides a standard end-user license agreement (EULA) that applies by default.
+              If a custom EULA is not provided for an app, the standard EULA applies and the license agreement link may
+              not appear on the App Store product page.
+            </p>
+            <p class="notice">
+              Apple Standard EULA: <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">apple.com/legal/internet-services/itunes/dev/stdeula</a>
             </p>
           </div>
 
           <div class="card">
-            <h3>Restrictions</h3>
-            <ul>
-              <li>Do not copy, modify, or create derivative works except as permitted by law.</li>
-              <li>Do not reverse engineer, decompile, or attempt to extract source code except where legally allowed.</li>
-              <li>Do not redistribute or sublicense the software.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Termination</h3>
+            <h3>Custom EULA (only if explicitly provided)</h3>
             <p>
-              This license terminates if you violate these terms. Upon termination, you must stop using the software and
-              delete all copies in your control.
+              If a specific Lirix App Publishing app uses a custom EULA for one or more territories, it will be shown for
+              that app in App Store Connect and/or on the app’s product page as applicable.
             </p>
           </div>
 
-          <div class="card">
-            <h3>Disclaimers and platform terms</h3>
+          <div class="card full">
+            <h3>Support</h3>
             <p>
-              The software is provided “AS IS” with no warranties. Your use may also be subject to additional platform
-              terms (for example, device or store-specific agreements). We do not quote or reproduce third-party terms
-              here; refer to the platform provider’s documentation for details.
+              Questions, complaints, or claims related to Lirix App Publishing apps can be directed to:
+              <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a>
             </p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ==============================
+         Support (#support)
+         ============================== -->
+    <section id="support" class="section" aria-labelledby="support-title">
+      <div class="container">
+        <div class="kicker">Support</div>
+        <h2 id="support-title">Support &amp; help</h2>
+        <p class="lead">
+          Email is the best way to reach us. To help us resolve issues quickly, please include your device model,
+          OS version, and clear steps to reproduce. Avoid sending sensitive personal information.
+        </p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>What to include</h3>
+            <ul>
+              <li>App name (or a short description if you prefer not to share the name)</li>
+              <li>Device + OS version</li>
+              <li>Steps to reproduce</li>
+              <li>What you expected vs. what happened</li>
+              <li>Optional screenshots (redact anything sensitive)</li>
+            </ul>
+            <p class="notice">
+              Support: <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Privacy‑respecting support</h3>
+            <p>
+              We aim to diagnose issues with minimal information. If logs or diagnostics are needed, we’ll request them
+              explicitly and scope the request to the problem.
+            </p>
+            <ul>
+              <li>No “required” accounts for basic support requests.</li>
+              <li>We don’t ask for unrelated permissions.</li>
+              <li>Deletion requests are handled via email.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="height: var(--space-5);"></div>
+
+        <div class="window" role="region" aria-labelledby="faq-title">
+          <div class="window-bar">
+            <div class="traffic" aria-hidden="true">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="window-title">FAQ</div>
+            <div style="width: 40px;" aria-hidden="true"></div>
+          </div>
+          <div class="window-body">
+            <h3 id="faq-title">Frequently asked questions</h3>
+
+            <div class="accordion" aria-label="Support FAQ">
+              <div class="acc-item">
+                <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="faq-1">
+                  How do I request deletion of data?
+                  <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div id="faq-1" class="acc-panel" hidden>
+                  Email <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a> with “Deletion Request” in the subject
+                  and describe what you’d like deleted. If the request relates to a specific app, mention it (or describe it).
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="faq-2">
+                  Do you track users for advertising?
+                  <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div id="faq-2" class="acc-panel" hidden>
+                  No — not by default. If any app ever implements tracking as defined by Apple, it will request permission
+                  using AppTrackingTransparency before tracking.
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="faq-3">
+                  Do you share personal data with third‑party AI?
+                  <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div id="faq-3" class="acc-panel" hidden>
+                  If an app feature uses third‑party AI and would share personal data with that AI provider, we will
+                  clearly disclose what is shared, where it goes, and obtain explicit permission before sharing.
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="faq-4">
+                  What about subscriptions and refunds?
+                  <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div id="faq-4" class="acc-panel" hidden>
+                  If an app offers subscriptions or in‑app purchases through Apple, billing and refunds are handled by the
+                  App Store. You can manage subscriptions in your Apple ID subscription settings.
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="faq-5">
+                  How do I report a security or safety issue?
+                  <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div id="faq-5" class="acc-panel" hidden>
+                  Email <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a> with “Security” in the subject.
+                  Please include as much detail as you can safely share.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         Contact (#contact)
+         ============================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="kicker">Contact</div>
+        <h2 id="contact-title">Contact</h2>
+        <p class="lead">
+          For support, privacy questions, or general inquiries, email:
+          <a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a>
+        </p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Email (recommended)</h3>
+            <p>
+              <strong><a href="mailto:lirix.ai@proton.me">lirix.ai@proton.me</a></strong>
+            </p>
+            <p class="muted">
+              This site does not run analytics, trackers, or third‑party scripts. Contacting us via email shares only what
+              you include in your message.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Quick contact form</h3>
+            <p class="muted">
+              This form opens your email client (it does not upload data from the website).
+            </p>
+            <form class="form" id="contactForm" autocomplete="on">
+              <label>
+                Your name (optional)
+                <input type="text" name="name" autocomplete="name" />
+              </label>
+              <label>
+                Your email (optional)
+                <input type="email" name="email" autocomplete="email" inputmode="email" />
+              </label>
+              <label>
+                Message
+                <textarea name="message" required></textarea>
+              </label>
+              <button class="btn primary" type="submit">
+                Compose email
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 7.5 12 13l8-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5 8.5v9h14v-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+                </svg>
+              </button>
+              <p class="notice">
+                Tip: Please avoid including passwords, payment details, or other sensitive personal information.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==============================
+       Footer
+       ============================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-links" aria-label="Footer links">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#eula">EULA</a>
+          <a href="#support">Support</a>
+          <a href="#contact">Contact</a>
+          <a href="#home">Back to top</a>
+        </div>
+        <div class="copyright">
+          © <span id="year">2025</span> Lirix App Publishing · Not affiliated with Apple.
+        </div>
+      </div>
+      <p class="muted" style="margin-top: 14px;">
+        Apple, App Store, iOS, iPadOS, macOS, and related marks are trademarks of Apple Inc.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      root.classList.remove('no-js');
+
+      // ----------------------------
+      // Footer year
+      // ----------------------------
+      const y = document.getElementById('year');
+      if (y) y.textContent = String(new Date().getFullYear());
+
+      // ----------------------------
+      // Theme toggle (light/dark/system)
+      // ----------------------------
+      const themeBtn = document.getElementById('themeToggle');
+      const THEME_KEY = 'lirix.theme';
+
+      const applyTheme = (theme) => {
+        if (theme === 'light' || theme === 'dark') {
+          root.setAttribute('data-theme', theme);
+        } else {
+          root.removeAttribute('data-theme'); // system
+        }
+        if (themeBtn) themeBtn.setAttribute('aria-pressed', String(theme === 'dark'));
+      };
+
+      const storedTheme = localStorage.getItem(THEME_KEY) || 'system';
+      applyTheme(storedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', (e) => {
+          // Option/Alt click resets to system theme
+          if (e.altKey) {
+            localStorage.setItem(THEME_KEY, 'system');
+            applyTheme('system');
+            return;
+          }
+          const current = root.getAttribute('data-theme'); // 'light'|'dark'|null
+          const next = current === 'dark' ? 'light' : 'dark';
+          localStorage.setItem(THEME_KEY, next);
+          applyTheme(next);
+        });
+      }
+
+      // ----------------------------
+      // Active section highlight in nav
+      // ----------------------------
+      const navLinks = Array.from(document.querySelectorAll('nav[aria-label="Primary"] a.navlink[href^="#"]'));
+      const linkById = new Map(navLinks.map(a => [a.getAttribute('href').slice(1), a]));
+      const targets = Array.from(document.querySelectorAll('main#home, section.section[id]'))
+        .filter(el => el.id && linkById.has(el.id));
+
+      const setCurrent = (id) => {
+        navLinks.forEach(a => a.removeAttribute('aria-current'));
+        const link = linkById.get(id);
+        if (link) link.setAttribute('aria-current', 'page');
+      };
+
+      if (targets.length) {
+        const io = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => (b.intersectionRatio - a.intersectionRatio))[0];
+          if (visible) setCurrent(visible.target.id);
+        }, {
+          rootMargin: '-30% 0px -60% 0px',
+          threshold: [0.05, 0.15, 0.25, 0.4, 0.6]
+        });
+
+        targets.forEach(t => io.observe(t));
+        setCurrent(targets[0].id);
+      }
+
+      // ----------------------------
+      // Copy to clipboard helper
+      // ----------------------------
+      document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-copy') || '';
+          if (!text) return;
+
+          const original = btn.textContent;
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = 'Copied';
+            setTimeout(() => { btn.textContent = original; }, 900);
+          } catch {
+            // Fallback: prompt copy
+            window.prompt('Copy:', text);
+          }
+        });
+      });
+
+      // ----------------------------
+      // Accordion behavior
+      // ----------------------------
+      document.querySelectorAll('.acc-trigger').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          const panelId = btn.getAttribute('aria-controls');
+          const panel = panelId ? document.getElementById(panelId) : null;
+
+          btn.setAttribute('aria-expanded', String(!expanded));
+          if (panel) panel.hidden = expanded;
+        });
+      });
+
+      // ----------------------------
+      // Contact form -> mailto composer
+      // ----------------------------
+      const form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const fd = new FormData(form);
+          const name = String(fd.get('name') || '').trim();
+          const email = String(fd.get('email') || '').trim();
+          const message = String(fd.get('message') || '').trim();
+
+          const lines = [
+            'Lirix App Publishing — Contact',
+            '',
+            name ? `Name: ${name}` : null,
+            email ? `Email: ${email}` : null,
+            '',
+            message ? message : '(No message provided)'
+          ].filter(Boolean);
+
+          const subject = 'Lirix App Publishing — Support / Inquiry';
+          const body = lines.join('\n');
+
+          const mailto = `mailto:lirix.ai@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailto;
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
